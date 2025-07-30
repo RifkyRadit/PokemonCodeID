@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="784-nN-jpd"/>
+                <outlet property="showPasswordButton" destination="6Hs-Dc-z9j" id="SYv-8l-OL1"/>
+                <outlet property="textField" destination="bqf-FH-aRD" id="UnK-75-DU2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="68"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmY-9j-VI9">
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="68"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bqd-uA-mmT">
+                            <rect key="frame" x="16" y="8" width="346" height="52"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqf-FH-aRD">
+                                    <rect key="frame" x="0.0" y="0.0" width="314" height="52"/>
+                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Hs-Dc-z9j">
+                                    <rect key="frame" x="322" y="0.0" width="24" height="52"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="q80-Og-jTO"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="icon_show_password"/>
+                                    <connections>
+                                        <action selector="showPasswordButtonAction:" destination="-1" eventType="touchUpInside" id="ikc-Uf-0F5"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="bqd-uA-mmT" secondAttribute="trailing" constant="8" id="Cie-6u-wRM"/>
+                        <constraint firstItem="bqd-uA-mmT" firstAttribute="top" secondItem="YmY-9j-VI9" secondAttribute="top" constant="8" id="F0M-ht-X8F"/>
+                        <constraint firstAttribute="bottom" secondItem="bqd-uA-mmT" secondAttribute="bottom" constant="8" id="JS8-hQ-lWh"/>
+                        <constraint firstItem="bqd-uA-mmT" firstAttribute="leading" secondItem="YmY-9j-VI9" secondAttribute="leading" constant="16" id="hy1-5m-SpP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="YmY-9j-VI9" secondAttribute="bottom" id="1FJ-iX-8Om"/>
+                <constraint firstItem="YmY-9j-VI9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ByY-Mv-gB3"/>
+                <constraint firstItem="YmY-9j-VI9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Cub-Rh-0bi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YmY-9j-VI9" secondAttribute="trailing" id="Y52-2G-3VL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="243" y="38"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_show_password" width="24" height="24"/>
+    </resources>
+</document>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="PokemonCodeid" customModuleProvider="target">
+            <connections>
+                <outlet property="LoginText" destination="C7s-Bb-m0h" id="P1B-Uv-bMV"/>
+                <outlet property="confirmPasswordField" destination="ajv-pi-hbt" id="e38-Lc-LG4"/>
+                <outlet property="contentView" destination="r5f-i8-b8o" id="8xg-dg-ZMs"/>
+                <outlet property="emailField" destination="FSD-G0-n6I" id="vLF-gi-g4l"/>
+                <outlet property="passwordField" destination="gTo-oW-mus" id="EpQ-I4-oEE"/>
+                <outlet property="registerButton" destination="tOw-ve-xVI" id="fsv-dU-YRX"/>
+                <outlet property="usernameField" destination="2F8-Hf-uKU" id="RVL-hd-IWm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-i8-b8o">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_header_register" translatesAutoresizingMaskIntoConstraints="NO" id="9pf-1C-RPs">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="393"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="9pf-1C-RPs" secondAttribute="height" multiplier="1:1" id="WGK-kQ-WmW"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2F8-Hf-uKU" userLabel="usernameField" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
+                            <rect key="frame" x="30" y="409" width="333" height="52"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="ZXM-Qs-ORb"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSD-G0-n6I" userLabel="emailField" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
+                            <rect key="frame" x="30" y="477" width="333" height="52"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="IuE-Pf-JNv"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTo-oW-mus" userLabel="passwordField" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
+                            <rect key="frame" x="30" y="545" width="333" height="52"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="ENl-OT-BlO"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajv-pi-hbt" userLabel="confirmPasswordField" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
+                            <rect key="frame" x="30" y="613" width="333" height="52"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="DaV-ER-uKN"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOw-ve-xVI">
+                            <rect key="frame" x="30" y="697" width="333" height="52"/>
+                            <color key="backgroundColor" name="color_main_red"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="xVi-gY-O4l"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Mendaftar"/>
+                            <connections>
+                                <action selector="registerButtonAction:" destination="-1" eventType="touchUpInside" id="nxQ-tu-ade"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7s-Bb-m0h">
+                            <rect key="frame" x="30" y="765" width="333" height="20.333333333333371"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ajv-pi-hbt" secondAttribute="trailing" constant="30" id="1Yb-Wg-ocn"/>
+                        <constraint firstItem="ajv-pi-hbt" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="33W-Dn-uWW"/>
+                        <constraint firstAttribute="trailing" secondItem="2F8-Hf-uKU" secondAttribute="trailing" constant="30" id="50A-jI-HfA"/>
+                        <constraint firstItem="gTo-oW-mus" firstAttribute="top" secondItem="FSD-G0-n6I" secondAttribute="bottom" constant="16" id="81W-rf-R4U"/>
+                        <constraint firstAttribute="trailing" secondItem="FSD-G0-n6I" secondAttribute="trailing" constant="30" id="BQl-bl-TsZ"/>
+                        <constraint firstAttribute="trailing" secondItem="gTo-oW-mus" secondAttribute="trailing" constant="30" id="C4P-XN-GKk"/>
+                        <constraint firstItem="tOw-ve-xVI" firstAttribute="top" secondItem="ajv-pi-hbt" secondAttribute="bottom" constant="32" id="Lx5-pR-UEo"/>
+                        <constraint firstItem="ajv-pi-hbt" firstAttribute="top" secondItem="gTo-oW-mus" secondAttribute="bottom" constant="16" id="OEo-J9-Re5"/>
+                        <constraint firstItem="gTo-oW-mus" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="P0g-El-LkO"/>
+                        <constraint firstItem="C7s-Bb-m0h" firstAttribute="top" secondItem="tOw-ve-xVI" secondAttribute="bottom" constant="16" id="QTd-Ad-biq"/>
+                        <constraint firstItem="FSD-G0-n6I" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="WfH-vg-fTo"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C7s-Bb-m0h" secondAttribute="bottom" constant="32" id="Whs-dE-bgw"/>
+                        <constraint firstAttribute="trailing" secondItem="tOw-ve-xVI" secondAttribute="trailing" constant="30" id="k4K-8R-Cg9"/>
+                        <constraint firstItem="C7s-Bb-m0h" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="kUr-Z9-UKK"/>
+                        <constraint firstItem="2F8-Hf-uKU" firstAttribute="top" secondItem="9pf-1C-RPs" secondAttribute="bottom" constant="16" id="mcB-5K-DeG"/>
+                        <constraint firstAttribute="trailing" secondItem="9pf-1C-RPs" secondAttribute="trailing" id="n7z-NI-1zV"/>
+                        <constraint firstItem="9pf-1C-RPs" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" id="n8q-g7-nxU"/>
+                        <constraint firstItem="2F8-Hf-uKU" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="pLI-RC-WfO"/>
+                        <constraint firstItem="FSD-G0-n6I" firstAttribute="top" secondItem="2F8-Hf-uKU" secondAttribute="bottom" constant="16" id="rfu-YJ-ruZ"/>
+                        <constraint firstItem="tOw-ve-xVI" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="wPz-TO-cbT"/>
+                        <constraint firstAttribute="trailing" secondItem="C7s-Bb-m0h" secondAttribute="trailing" constant="30" id="yjp-2f-1Ps"/>
+                        <constraint firstItem="9pf-1C-RPs" firstAttribute="top" secondItem="r5f-i8-b8o" secondAttribute="top" id="zpB-ia-8UE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="r5f-i8-b8o" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2HA-9X-het"/>
+                <constraint firstItem="r5f-i8-b8o" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BRk-MO-9oo"/>
+                <constraint firstItem="r5f-i8-b8o" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="lwS-5E-Zan"/>
+                <constraint firstAttribute="bottom" secondItem="r5f-i8-b8o" secondAttribute="bottom" id="qoL-Vk-V16"/>
+            </constraints>
+            <point key="canvasLocation" x="115" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="image_header_register" width="360" height="307"/>
+        <namedColor name="color_main_red">
+            <color red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -43,7 +43,7 @@ class CoreTextField: UIView {
     }
     
     func configureCustomTextField(isPassowrdField: Bool = false, placeholderText: String) {
-        showPasswordButton.setImage(UIImage(named: "icon_show_password"), for: .normal)
+        showPasswordButton.setImage(UIImage(named: "icon_hide_password"), for: .normal)
         showPasswordButton.isHidden = !isPassowrdField
         textField.isSecureTextEntry = isPassowrdField
         textField.placeholder = placeholderText
@@ -51,11 +51,11 @@ class CoreTextField: UIView {
     
     @IBAction func showPasswordButtonAction(_ sender: Any) {
         if isPasswordHiding {
-            showPasswordButton.setImage(UIImage(named: "icon_hide_password"), for: .normal)
+            showPasswordButton.setImage(UIImage(named: "icon_show_password"), for: .normal)
             textField.isSecureTextEntry = false
             isPasswordHiding = false
         } else {
-            showPasswordButton.setImage(UIImage(named: "icon_show_password"), for: .normal)
+            showPasswordButton.setImage(UIImage(named: "icon_hide_password"), for: .normal)
             textField.isSecureTextEntry = true
             isPasswordHiding = true
         }

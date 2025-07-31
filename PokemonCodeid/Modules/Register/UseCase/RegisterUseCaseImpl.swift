@@ -10,12 +10,8 @@ import Foundation
 class RegisterUseCaseImpl: RegisterUseCaseProtocol {
     private let repository: RegisterRepositoryProtocol
     
-    public init(repository: RegisterRepositoryProtocol) {
+    public init(repository: RegisterRepositoryProtocol = RegisterRepositoryImpl()) {
         self.repository = repository
-    }
-    
-    init() {
-        self.repository = RegisterRepositoryImpl()
     }
     
     func validateUserProfile(username: String, email: String, password: String, confirmPassword: String) -> RegisterValidationState {

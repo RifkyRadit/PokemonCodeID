@@ -7,7 +7,7 @@
 
 import UIKit
 import RxSwift
-import RealmSwift
+import MBProgressHUD
 
 class RegisterViewController: UIViewController {
 
@@ -24,10 +24,10 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("📂 Realm file path: \(Realm.Configuration.defaultConfiguration.fileURL?.path ?? "Not found")")
+        
         setupView()
         bindViewModel()
-//        registerKeyboardListener()
+        registerKeyboardListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +46,7 @@ class RegisterViewController: UIViewController {
         registerButton.isEnabled = false
         registerButton.backgroundColor = UIColor(named: "color_gray")
         
-        setupRegisterText()
+        setupLoginText()
         
         [usernameField, emailField, passwordField, confirmPasswordField].forEach {
             $0?.textField.addTarget(self, action: #selector(textFieldsDidChange), for: .editingChanged)
@@ -75,8 +75,6 @@ class RegisterViewController: UIViewController {
         registerButton.backgroundColor = isFormFilled ? UIColor(named: "color_main_red") : UIColor(named: "color_gray")
     }
     
-    
-
     @IBAction func registerButtonAction(_ sender: Any) {
         let usernameText = usernameField.textField.text ?? ""
         let emailText = emailField.textField.text ?? ""
@@ -87,27 +85,11 @@ class RegisterViewController: UIViewController {
     }
 }
 
-// MARK: - Keyboard Listener
+// MARK: - setup login text
 extension RegisterViewController {
-    private func registerKeyboardListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        let tapGestureContentView = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardAction))
-        contentView.addGestureRecognizer(tapGestureContentView)
-    }
-    
-    private func setupRegisterText() {
-        let registerText = "Sudah punya akun? Silahkan masuk"
-        let attributedString = NSMutableAttributedString(string: registerText)
-        let rangeOfRegister = (registerText as NSString).range(of: "masuk")
-        
-        let rangeOfNormalText = NSRange(location: 0, length: registerText.count)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: rangeOfNormalText)
-        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 15) as Any, range: rangeOfNormalText)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: rangeOfRegister)
-        
-        LoginText.attributedText = attributedString
+    private func setupLoginText() {
+        let loginText = "Sudah punya akun? Silahkan masuk"
+        LoginText.attributedText = getCustomAttributeText(fullText: loginText, rangeText: "masuk")
         LoginText.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleLabelTap(_ :)))
         LoginText.addGestureRecognizer(tapGesture)
@@ -120,41 +102,20 @@ extension RegisterViewController {
             return
         }
         
-        let tapLocation = gesture.location(in: label)
-        
-        let textContainer = NSTextContainer(size: label.bounds.size)
-        textContainer.lineFragmentPadding = 0.0
-        textContainer.lineBreakMode = label.lineBreakMode
-        textContainer.maximumNumberOfLines = label.numberOfLines
-        
-        let layoutManager = NSLayoutManager()
-        layoutManager.addTextContainer(textContainer)
-        
-        let textStorage = NSTextStorage(attributedString: attributedText)
-        textStorage.addLayoutManager(layoutManager)
-        
-        let textBoundingBox = layoutManager.usedRect(for: textContainer)
-        let textOffset = CGPoint(x: (label.bounds.size.width - textBoundingBox.size.width) * 0.5 - textBoundingBox.origin.x,
-                                 y: (label.bounds.size.height - textBoundingBox.size.height) * 0.5 - textBoundingBox.origin.y)
-        
-        let adjustedTapLocation = CGPoint(x: tapLocation.x - textOffset.x, y: tapLocation.y - textOffset.y)
-        
-        let glyphIndex = layoutManager.glyphIndex(for: adjustedTapLocation, in: textContainer)
-        let characterIndex = layoutManager.characterIndexForGlyph(at: glyphIndex)
-        
-        if characterIndex >= attributedText.length {
-            return
-        }
-        
-        let fullText = (label.attributedText?.string ?? "") as NSString
-        let rangeOfRegister = fullText.range(of: "masuk")
-        
-        if NSLocationInRange(characterIndex, rangeOfRegister) {
-            print(">>> DEBUG login has tapped")
+        if getValidateAreaGestureTapText(gesture: gesture, label: label, attributedText: attributedText, rangeText: "masuk") {
             self.navigationController?.popViewController(animated: true)
-        } else {
-            print(">>> DEBUG other text has tapped")
         }
+    }
+}
+
+// MARK: - Keyboard Listener
+extension RegisterViewController {
+    private func registerKeyboardListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let tapGestureContentView = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardAction))
+        contentView.addGestureRecognizer(tapGestureContentView)
     }
     
     @objc func dismissKeyboardAction() {
@@ -176,7 +137,12 @@ extension RegisterViewController {
 extension RegisterViewController {
     private func configureState(state: RegisterViewState) {
         switch state {
+        case .loading:
+            let progressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
+            progressHUD.label.text = "Loading...."
+            
         case .successRegistration:
+            MBProgressHUD.hide(for: self.view, animated: true)
             let alert = UIAlertController(title: "", message: "Registrasi berhasil. Silahkan untuk masuk kembali", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OKE", style: .default, handler: { [weak self] _ in
                 guard let self else {
@@ -187,9 +153,11 @@ extension RegisterViewController {
             }))
             self.present(alert, animated: true)
         case .failedRegistration:
+            MBProgressHUD.hide(for: self.view, animated: true)
             let errorAlert = showErrorAlert(errorMessage: "Registrasi Gagal. Silahkan coba kembali beberapa saat lagi")
             self.present(errorAlert, animated: true)
         case .invalidData(let state):
+            MBProgressHUD.hide(for: self.view, animated: true)
             configureInvalidDataRegistration(state: state)
         }
     }
@@ -212,11 +180,3 @@ extension RegisterViewController {
         }
     }
 }
-
-//// MARK: - UITextFieldDelegate
-//extension RegisterViewController: UITextFieldDelegate {
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-//}

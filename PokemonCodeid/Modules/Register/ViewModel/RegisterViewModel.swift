@@ -10,6 +10,7 @@ import RxSwift
 import RxRelay
 
 enum RegisterViewState {
+    case loading
     case successRegistration
     case failedRegistration
     case invalidData(state: RegisterValidationState)
@@ -29,9 +30,13 @@ protocol RegisterViewModelOutput {
 }
 
 final class RegisterViewModel: RegisterViewModelInput {
-    private var registerUseCase = RegisterUseCaseImpl()
+    private var registerUseCase: RegisterUseCaseProtocol
     
     private var stateVariable = BehaviorRelay<RegisterViewState?>(value: nil)
+    
+    init(registerUseCase: RegisterUseCaseProtocol = RegisterUseCaseImpl()) {
+        self.registerUseCase = registerUseCase
+    }
     
     func registerNewUser(email: String, username: String, password: String, confirmPassword: String) {
         validationDataUser(email: email, username: username, password: password, confirmPassword: confirmPassword)
@@ -45,32 +50,32 @@ extension RegisterViewModel: RegisterViewModelType {
 
 extension RegisterViewModel {
     private func validationDataUser(email: String, username: String, password: String, confirmPassword: String) {
-        let validationData = registerUseCase.validateUserProfile(username: username, email: email, password: password, confirmPassword: confirmPassword)
-        switch validationData {
-        case .success:
-            registerUser(email: email, username: username, password: password)
-        case .usernameAlready:
-            stateVariable.accept(.invalidData(state: .usernameAlready))
-        case .emailAlready:
-            stateVariable.accept(.invalidData(state: .emailAlready))
-        case .passowrdNotSame:
-            stateVariable.accept(.invalidData(state: .passowrdNotSame))
+        stateVariable.accept(.loading)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            guard let self else { return }
+            
+            let validationData = self.registerUseCase.validateUserProfile(username: username, email: email, password: password, confirmPassword: confirmPassword)
+            switch validationData {
+            case .success:
+                self.registerUser(email: email, username: username, password: password)
+            case .usernameAlready:
+                self.stateVariable.accept(.invalidData(state: .usernameAlready))
+            case .emailAlready:
+                self.stateVariable.accept(.invalidData(state: .emailAlready))
+            case .passowrdNotSame:
+                self.stateVariable.accept(.invalidData(state: .passowrdNotSame))
+            }
         }
     }
     
     private func registerUser(email: String, username: String, password: String) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+        registerUseCase.registerUser(username: username, email: email, password: password) { [weak self] result in
             guard let self else { return }
-            
-            self.registerUseCase.registerUser(username: username, email: email, password: password) { result in
-                switch result {
-                case .success:
-                    print(">>> DEBUG registerUser success")
-                    self.stateVariable.accept(.successRegistration)
-                case .failure:
-                    print(">>> DEBUG registerUser failed")
-                    self.stateVariable.accept(.failedRegistration)
-                }
+            switch result {
+            case .success:
+                self.stateVariable.accept(.successRegistration)
+            case .failure:
+                self.stateVariable.accept(.failedRegistration)
             }
         }
     }

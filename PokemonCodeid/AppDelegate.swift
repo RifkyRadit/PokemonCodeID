@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        printRealmDebugInfo()
         return true
     }
 
@@ -31,6 +33,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    func printRealmDebugInfo() {
+        let config = Realm.Configuration.defaultConfiguration
+        print("📂 Realm path:", config.fileURL?.path ?? "Not found")
+
+        do {
+            let realm = try Realm()
+            let users = realm.objects(UserModel.self)
+            print("👥 Total users in Realm:", users.count)
+
+            for user in users {
+                print("   - \(user.username) | \(user.email) | \(user.password)")
+            }
+        } catch {
+            print("❌ Failed to open Realm:", error)
+        }
+    }
 
 }
 

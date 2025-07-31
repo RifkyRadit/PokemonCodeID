@@ -14,6 +14,11 @@
 		C36DA5992E38AF0B00E74202 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36DA5972E38AF0B00E74202 /* Main.storyboard */; };
 		C36DA59B2E38AF0D00E74202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C36DA59A2E38AF0D00E74202 /* Assets.xcassets */; };
 		C36DA59E2E38AF0D00E74202 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36DA59C2E38AF0D00E74202 /* LaunchScreen.storyboard */; };
+		C3CA1B442E3B250800E9699E /* LoginRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA1B432E3B250800E9699E /* LoginRepositoryProtocol.swift */; };
+		C3CA1B462E3B251400E9699E /* LoginRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA1B452E3B251400E9699E /* LoginRepositoryImpl.swift */; };
+		C3CA1B482E3B25CD00E9699E /* LoginUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA1B472E3B25CD00E9699E /* LoginUseCaseProtocol.swift */; };
+		C3CA1B4A2E3B25DC00E9699E /* LoginUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA1B492E3B25DC00E9699E /* LoginUseCaseImpl.swift */; };
+		C3CA1B4C2E3B264B00E9699E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA1B4B2E3B264B00E9699E /* LoginViewModel.swift */; };
 		C3CD6CC92E398A0D0093C929 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CD6CC72E398A0D0093C929 /* LoginViewController.swift */; };
 		C3CD6CCA2E398A0D0093C929 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3CD6CC82E398A0D0093C929 /* LoginViewController.xib */; };
 		C3CD6CCF2E398DDA0093C929 /* CoreTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CD6CCE2E398DDA0093C929 /* CoreTextField.swift */; };
@@ -41,6 +46,11 @@
 		C36DA59A2E38AF0D00E74202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C36DA59D2E38AF0D00E74202 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C36DA59F2E38AF0D00E74202 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3CA1B432E3B250800E9699E /* LoginRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryProtocol.swift; sourceTree = "<group>"; };
+		C3CA1B452E3B251400E9699E /* LoginRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryImpl.swift; sourceTree = "<group>"; };
+		C3CA1B472E3B25CD00E9699E /* LoginUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseProtocol.swift; sourceTree = "<group>"; };
+		C3CA1B492E3B25DC00E9699E /* LoginUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseImpl.swift; sourceTree = "<group>"; };
+		C3CA1B4B2E3B264B00E9699E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C3CD6CC72E398A0D0093C929 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C3CD6CC82E398A0D0093C929 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		C3CD6CCE2E398DDA0093C929 /* CoreTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTextField.swift; sourceTree = "<group>"; };
@@ -115,6 +125,24 @@
 			path = PokemonCodeid;
 			sourceTree = "<group>";
 		};
+		C3CA1B412E3B24EB00E9699E /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C3CA1B432E3B250800E9699E /* LoginRepositoryProtocol.swift */,
+				C3CA1B452E3B251400E9699E /* LoginRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		C3CA1B422E3B24F100E9699E /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				C3CA1B472E3B25CD00E9699E /* LoginUseCaseProtocol.swift */,
+				C3CA1B492E3B25DC00E9699E /* LoginUseCaseImpl.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		C3CD6CC12E3989CA0093C929 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +155,8 @@
 		C3CD6CC22E3989D80093C929 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				C3CA1B422E3B24F100E9699E /* UseCase */,
+				C3CA1B412E3B24EB00E9699E /* Repository */,
 				C3CD6CC62E3989F40093C929 /* ViewModel */,
 				C3CD6CC52E3989EF0093C929 /* Model */,
 				C3CD6CC42E3989EB0093C929 /* View */,
@@ -165,6 +195,7 @@
 		C3CD6CC62E3989F40093C929 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C3CA1B4B2E3B264B00E9699E /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -385,18 +416,23 @@
 				C3CD6CCF2E398DDA0093C929 /* CoreTextField.swift in Sources */,
 				C3CD6D132E39C1C60093C929 /* RegisterRepositoryProtocol.swift in Sources */,
 				C3CD6D152E39C1D80093C929 /* RegisterRepositoryImpl.swift in Sources */,
+				C3CA1B442E3B250800E9699E /* LoginRepositoryProtocol.swift in Sources */,
 				C3CD6CC92E398A0D0093C929 /* LoginViewController.swift in Sources */,
 				C3CD6D0F2E39C1870093C929 /* RegisterUseCaseProtocol.swift in Sources */,
 				C3CD6D282E39D24E0093C929 /* Utility.swift in Sources */,
 				C36DA5962E38AF0B00E74202 /* ViewController.swift in Sources */,
+				C3CA1B4C2E3B264B00E9699E /* LoginViewModel.swift in Sources */,
 				C3CD6D112E39C1B70093C929 /* RegisterUseCaseImpl.swift in Sources */,
+				C3CA1B462E3B251400E9699E /* LoginRepositoryImpl.swift in Sources */,
 				C3CD6D1D2E39C80C0093C929 /* RegisterValidationState.swift in Sources */,
+				C3CA1B4A2E3B25DC00E9699E /* LoginUseCaseImpl.swift in Sources */,
 				C3CD6CD92E39B0B70093C929 /* RegisterViewController.swift in Sources */,
 				C3CD6D212E39CA910093C929 /* RegisterViewModel.swift in Sources */,
 				C3CD6D1F2E39C84F0093C929 /* LoginValidationState.swift in Sources */,
 				C36DA5922E38AF0B00E74202 /* AppDelegate.swift in Sources */,
 				C36DA5942E38AF0B00E74202 /* SceneDelegate.swift in Sources */,
 				C3CD6D172E39C7420093C929 /* UserModel.swift in Sources */,
+				C3CA1B482E3B25CD00E9699E /* LoginUseCaseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

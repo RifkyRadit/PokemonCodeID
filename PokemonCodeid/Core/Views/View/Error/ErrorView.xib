@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ErrorView" customModule="PokemonCodeid" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="S2J-sC-ra0"/>
+                <outlet property="descriptionLabel" destination="RYd-0k-KV0" id="NY7-TJ-EMk"/>
+                <outlet property="iconImageView" destination="m0Z-GH-enj" id="Z7w-Hl-vWR"/>
+                <outlet property="retryButton" destination="Nx1-ew-44e" id="Rw6-i0-KvX"/>
+                <outlet property="titleLabel" destination="yVu-4c-5cN" id="bup-af-OoU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j57-Gi-i8k">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m0Z-GH-enj">
+                            <rect key="frame" x="121.66666666666669" y="64" width="150" height="150"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="150" id="0YD-1z-3ea"/>
+                                <constraint firstAttribute="width" constant="150" id="uhG-z9-sCn"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result Not Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVu-4c-5cN">
+                            <rect key="frame" x="16" y="238" width="361" height="22"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYd-0k-KV0">
+                            <rect key="frame" x="16" y="268" width="361" height="18.666666666666686"/>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                            <color key="textColor" systemColor="viewFlipsideBackgroundColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nx1-ew-44e">
+                            <rect key="frame" x="51.666666666666657" y="310.66666666666669" width="290" height="48"/>
+                            <color key="backgroundColor" name="color_main_red"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="mVc-Hg-oLU"/>
+                                <constraint firstAttribute="width" constant="290" id="vnh-qT-IOY"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Coba Lagi"/>
+                            <connections>
+                                <action selector="retryButtonAction:" destination="-1" eventType="touchUpInside" id="PTz-ly-6hP"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="yVu-4c-5cN" firstAttribute="top" secondItem="m0Z-GH-enj" secondAttribute="bottom" constant="24" id="3VY-VQ-nTx"/>
+                        <constraint firstItem="Nx1-ew-44e" firstAttribute="centerX" secondItem="j57-Gi-i8k" secondAttribute="centerX" id="P6f-k9-LZ5"/>
+                        <constraint firstItem="Nx1-ew-44e" firstAttribute="top" secondItem="RYd-0k-KV0" secondAttribute="bottom" constant="24" id="PgC-Ic-FBG"/>
+                        <constraint firstItem="yVu-4c-5cN" firstAttribute="centerX" secondItem="j57-Gi-i8k" secondAttribute="centerX" id="TMT-Ge-dJt"/>
+                        <constraint firstItem="RYd-0k-KV0" firstAttribute="top" secondItem="yVu-4c-5cN" secondAttribute="bottom" constant="8" id="cih-nz-8eI"/>
+                        <constraint firstAttribute="trailing" secondItem="yVu-4c-5cN" secondAttribute="trailing" constant="16" id="lzH-j5-xmi"/>
+                        <constraint firstItem="m0Z-GH-enj" firstAttribute="top" secondItem="j57-Gi-i8k" secondAttribute="top" constant="64" id="mka-hY-dmm"/>
+                        <constraint firstAttribute="trailing" secondItem="RYd-0k-KV0" secondAttribute="trailing" constant="16" id="nL2-Rj-rgr"/>
+                        <constraint firstItem="m0Z-GH-enj" firstAttribute="centerX" secondItem="j57-Gi-i8k" secondAttribute="centerX" id="om5-Mw-2z7"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Nx1-ew-44e" secondAttribute="bottom" constant="16" id="ppT-zv-rtA"/>
+                        <constraint firstItem="yVu-4c-5cN" firstAttribute="leading" secondItem="j57-Gi-i8k" secondAttribute="leading" constant="16" id="sgf-xM-6zz"/>
+                        <constraint firstItem="RYd-0k-KV0" firstAttribute="centerX" secondItem="j57-Gi-i8k" secondAttribute="centerX" id="wXf-Kq-Lnm"/>
+                        <constraint firstItem="RYd-0k-KV0" firstAttribute="leading" secondItem="j57-Gi-i8k" secondAttribute="leading" constant="16" id="weA-4k-tVE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="j57-Gi-i8k" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="clo-J9-H0b"/>
+                <constraint firstItem="j57-Gi-i8k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="efb-fm-7Wr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="j57-Gi-i8k" secondAttribute="trailing" id="gQZ-ls-Dnm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="j57-Gi-i8k" secondAttribute="bottom" id="hv3-Ah-XFu"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-27" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="color_main_red">
+            <color red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

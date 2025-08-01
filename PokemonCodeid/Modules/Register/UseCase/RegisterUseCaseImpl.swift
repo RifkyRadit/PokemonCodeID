@@ -22,3 +22,4 @@ class RegisterUseCaseImpl: RegisterUseCaseProtocol {
         repository.saveUser(username: username, email: email, password: password, completion: completion)
     }
 }
+ 

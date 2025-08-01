@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomepageViewController" customModule="PokemonCodeid" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="23i-09-igf" id="T3u-cC-my4"/>
+                <outlet property="errorView" destination="7of-sk-iGS" id="ZJR-uf-lqR"/>
+                <outlet property="pokemonTableView" destination="YL4-c8-eNe" id="0Ck-R0-P4J"/>
+                <outlet property="searchButton" destination="sLS-xJ-YWG" id="xHh-Yy-sDZ"/>
+                <outlet property="searchTextField" destination="6bK-cU-VtF" id="FMr-cv-neC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewSearch" destination="Efy-Hh-SFl" id="IYY-Gt-DA9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHA-M2-Ygs">
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23i-09-igf" userLabel="ContentView">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efy-Hh-SFl">
+                                    <rect key="frame" x="16" y="16" width="296" height="48"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cari Pokemon ....." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6bK-cU-VtF">
+                                            <rect key="frame" x="10" y="10" width="276" height="31"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="48" id="CMs-wb-mHQ"/>
+                                        <constraint firstItem="6bK-cU-VtF" firstAttribute="top" secondItem="Efy-Hh-SFl" secondAttribute="top" constant="10" id="Qfe-mu-VhT"/>
+                                        <constraint firstItem="6bK-cU-VtF" firstAttribute="leading" secondItem="Efy-Hh-SFl" secondAttribute="leading" constant="10" id="ohO-6E-xgb"/>
+                                        <constraint firstAttribute="trailing" secondItem="6bK-cU-VtF" secondAttribute="trailing" constant="10" id="qCV-GK-aYe"/>
+                                        <constraint firstAttribute="bottom" secondItem="6bK-cU-VtF" secondAttribute="bottom" constant="7" id="xTx-zH-VZ8"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLS-xJ-YWG">
+                                    <rect key="frame" x="322" y="17.666666666666671" width="55" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="48" id="VZy-bW-KDW"/>
+                                        <constraint firstAttribute="width" constant="55" id="kW1-Dq-uR5"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Cari">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="searchButtonAction:" destination="-1" eventType="touchUpInside" id="qXN-2N-QPd"/>
+                                    </connections>
+                                </button>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YL4-c8-eNe">
+                                    <rect key="frame" x="0.0" y="65.666666666666686" width="393" height="727.33333333333326"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="YL4-c8-eNe" secondAttribute="bottom" id="4IA-i2-5jB"/>
+                                <constraint firstItem="Efy-Hh-SFl" firstAttribute="top" secondItem="23i-09-igf" secondAttribute="top" constant="16" id="OnZ-Cg-VAY"/>
+                                <constraint firstItem="YL4-c8-eNe" firstAttribute="leading" secondItem="23i-09-igf" secondAttribute="leading" id="Qs9-M8-hsQ"/>
+                                <constraint firstAttribute="trailing" secondItem="YL4-c8-eNe" secondAttribute="trailing" id="QzS-A7-oiW"/>
+                                <constraint firstAttribute="trailing" secondItem="sLS-xJ-YWG" secondAttribute="trailing" constant="16" id="n47-XG-0Dp"/>
+                                <constraint firstItem="sLS-xJ-YWG" firstAttribute="centerY" secondItem="6bK-cU-VtF" secondAttribute="centerY" id="vea-XZ-6Pc"/>
+                                <constraint firstItem="sLS-xJ-YWG" firstAttribute="leading" secondItem="Efy-Hh-SFl" secondAttribute="trailing" constant="10" id="wBL-K1-gD9"/>
+                                <constraint firstItem="Efy-Hh-SFl" firstAttribute="leading" secondItem="23i-09-igf" secondAttribute="leading" constant="16" id="xUO-Z2-G29"/>
+                                <constraint firstItem="YL4-c8-eNe" firstAttribute="top" secondItem="sLS-xJ-YWG" secondAttribute="bottom" id="zT0-wf-yUg"/>
+                            </constraints>
+                        </view>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7of-sk-iGS" customClass="ErrorView" customModule="PokemonCodeid" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="23i-09-igf" secondAttribute="bottom" id="Bsx-wI-igH"/>
+                        <constraint firstAttribute="trailing" secondItem="23i-09-igf" secondAttribute="trailing" id="G8t-yh-TPA"/>
+                        <constraint firstItem="7of-sk-iGS" firstAttribute="leading" secondItem="LHA-M2-Ygs" secondAttribute="leading" id="Ghf-yH-3TZ"/>
+                        <constraint firstAttribute="trailing" secondItem="7of-sk-iGS" secondAttribute="trailing" id="HbT-rn-WVn"/>
+                        <constraint firstItem="7of-sk-iGS" firstAttribute="top" secondItem="LHA-M2-Ygs" secondAttribute="top" id="Nj4-A9-XwD"/>
+                        <constraint firstItem="23i-09-igf" firstAttribute="leading" secondItem="LHA-M2-Ygs" secondAttribute="leading" id="XWG-NV-vhs"/>
+                        <constraint firstAttribute="bottom" secondItem="7of-sk-iGS" secondAttribute="bottom" id="dQN-XU-wf2"/>
+                        <constraint firstItem="23i-09-igf" firstAttribute="top" secondItem="LHA-M2-Ygs" secondAttribute="top" id="nnZ-dh-nay"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="LHA-M2-Ygs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="494-XR-ldd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LHA-M2-Ygs" secondAttribute="trailing" id="Lh5-IQ-EKr"/>
+                <constraint firstItem="LHA-M2-Ygs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZfZ-Sm-jAj"/>
+                <constraint firstAttribute="bottom" secondItem="LHA-M2-Ygs" secondAttribute="bottom" id="p6W-R9-iOx"/>
+            </constraints>
+            <point key="canvasLocation" x="125.95419847328243" y="-11.267605633802818"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

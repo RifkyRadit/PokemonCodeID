@@ -22,6 +22,7 @@ class LoginUseCaseImpl: LoginUseCaseProtocol {
         }
         
         if !data.password.isEmpty, data.password == password {
+            UserDefaults.standard.setValue(username, forKey: "usernameProfile")
             return .successLogin
         } else {
             return .wrongPassword

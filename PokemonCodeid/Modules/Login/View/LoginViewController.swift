@@ -102,8 +102,12 @@ class LoginViewController: UIViewController {
             progressHUD.customView = UIImageView(image: UIImage(systemName: "checkmark"))
             progressHUD.label.text = "Berhasil"
             
-            progressHUD.hide(animated: true, afterDelay: 1.0)
-            print(">>> DEBUG Success Login navigate to Homepage")
+            progressHUD.hide(animated: true, afterDelay: 0.5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                guard let self else { return }
+                self.navigateToRootMainTabbar()
+            }
+            
         case .userNotFound:
             let errorAlert = showErrorAlert(errorMessage: "Username yang anda masukkan tidak terdaftar, silahkan mendaftar terlebih dahulu.")
             self.present(errorAlert, animated: true)
@@ -112,6 +116,24 @@ class LoginViewController: UIViewController {
             let errorAlert = showErrorAlert(errorMessage: "Password yang anda masukkan salah, silahkan periksa lagi.")
             self.present(errorAlert, animated: true)
         }
+    }
+    
+    private func navigateToRootMainTabbar() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, 
+              let sceneDelegate = windowScene.delegate as? SceneDelegate,
+              let window = sceneDelegate.window
+        else {
+            return
+        }
+        
+        let mainTabbarController = MainTabViewController()
+        let navController = UINavigationController(rootViewController: mainTabbarController)
+        window.rootViewController = navController
+        UIView.transition(with: window,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: nil,
+                              completion: nil)
     }
 }
 

@@ -64,6 +64,8 @@ extension RegisterViewModel {
                 self.stateVariable.accept(.invalidData(state: .emailAlready))
             case .passowrdNotSame:
                 self.stateVariable.accept(.invalidData(state: .passowrdNotSame))
+            case .wrongEmailFormat:
+                self.stateVariable.accept(.invalidData(state: .wrongEmailFormat))
             }
         }
     }

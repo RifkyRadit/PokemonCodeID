@@ -13,22 +13,29 @@ class RegisterRepositoryImpl: RegisterRepositoryProtocol {
     private let realm = try? Realm()
     
     func validateUserProfile(username: String, email: String, password: String, confirmPassword: String) -> RegisterValidationState {
-        if password != confirmPassword {
-            return .passowrdNotSame
+        if ((realm?.objects(UserModel.self).filter("username == %@", username).first) != nil) {
+            return .usernameAlready
         } else if ((realm?.objects(UserModel.self).filter("email == %@", email).first) != nil) {
             return .emailAlready
-        } else if ((realm?.objects(UserModel.self).filter("username == %@", username).first) != nil) {
-            return .usernameAlready
-        } else {
+        } else if password != confirmPassword {
+            return .passowrdNotSame
+        } else if !validateEmail(email: email) {
+            return .wrongEmailFormat
+        }else {
             return .success
         }
     }
     
     func saveUser(username: String, email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        
+        let salt = generateSalt()
+        let passHashed = hashPassword(password, salt: salt)
+        
         let user = UserModel()
         user.username = username
         user.email = email
-        user.password = password
+        user.salt = salt
+        user.hashPass = passHashed
         
         do {
             try self.realm?.write({

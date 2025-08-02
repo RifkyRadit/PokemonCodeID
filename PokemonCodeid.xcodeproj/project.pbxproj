@@ -36,6 +36,8 @@
 		C377CECD2E3BD22E006B828C /* DetailPokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377CECC2E3BD22E006B828C /* DetailPokemonModel.swift */; };
 		C377CECF2E3BD3CA006B828C /* DetailPokemonUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377CECE2E3BD3CA006B828C /* DetailPokemonUseCaseProtocol.swift */; };
 		C377CED12E3BD3FD006B828C /* DetailPokemonUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377CED02E3BD3FD006B828C /* DetailPokemonUseCaseImpl.swift */; };
+		C3B096922E3CEB9900682A80 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B096912E3CEB9900682A80 /* UIViewController+Extension.swift */; };
+		C3B096942E3D02CF00682A80 /* PokemonRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B096932E3D02CF00682A80 /* PokemonRealmModel.swift */; };
 		C3CA1B442E3B250800E9699E /* LoginRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA1B432E3B250800E9699E /* LoginRepositoryProtocol.swift */; };
 		C3CA1B462E3B251400E9699E /* LoginRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA1B452E3B251400E9699E /* LoginRepositoryImpl.swift */; };
 		C3CA1B482E3B25CD00E9699E /* LoginUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA1B472E3B25CD00E9699E /* LoginUseCaseProtocol.swift */; };
@@ -62,6 +64,7 @@
 		C3CD6D1F2E39C84F0093C929 /* LoginValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CD6D1E2E39C84F0093C929 /* LoginValidationState.swift */; };
 		C3CD6D212E39CA910093C929 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CD6D202E39CA910093C929 /* RegisterViewModel.swift */; };
 		C3CD6D282E39D24E0093C929 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CD6D272E39D24E0093C929 /* Utility.swift */; };
+		C3E475DF2E3E0D1D00D40256 /* PokemonListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E475DE2E3E0D1D00D40256 /* PokemonListResult.swift */; };
 		C3FF0CDA2E3C4D1E009F4699 /* AbilityItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0CD82E3C4D1E009F4699 /* AbilityItemCell.swift */; };
 		C3FF0CDB2E3C4D1E009F4699 /* AbilityItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0CD92E3C4D1E009F4699 /* AbilityItemCell.xib */; };
 		C3FF0CDF2E3C59A2009F4699 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0CDE2E3C59A2009F4699 /* ErrorView.swift */; };
@@ -106,6 +109,8 @@
 		C377CECC2E3BD22E006B828C /* DetailPokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPokemonModel.swift; sourceTree = "<group>"; };
 		C377CECE2E3BD3CA006B828C /* DetailPokemonUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPokemonUseCaseProtocol.swift; sourceTree = "<group>"; };
 		C377CED02E3BD3FD006B828C /* DetailPokemonUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPokemonUseCaseImpl.swift; sourceTree = "<group>"; };
+		C3B096912E3CEB9900682A80 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		C3B096932E3D02CF00682A80 /* PokemonRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRealmModel.swift; sourceTree = "<group>"; };
 		C3CA1B432E3B250800E9699E /* LoginRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryProtocol.swift; sourceTree = "<group>"; };
 		C3CA1B452E3B251400E9699E /* LoginRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryImpl.swift; sourceTree = "<group>"; };
 		C3CA1B472E3B25CD00E9699E /* LoginUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -132,6 +137,7 @@
 		C3CD6D1E2E39C84F0093C929 /* LoginValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidationState.swift; sourceTree = "<group>"; };
 		C3CD6D202E39CA910093C929 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		C3CD6D272E39D24E0093C929 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		C3E475DE2E3E0D1D00D40256 /* PokemonListResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListResult.swift; sourceTree = "<group>"; };
 		C3FF0CD82E3C4D1E009F4699 /* AbilityItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityItemCell.swift; sourceTree = "<group>"; };
 		C3FF0CD92E3C4D1E009F4699 /* AbilityItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AbilityItemCell.xib; sourceTree = "<group>"; };
 		C3FF0CDE2E3C59A2009F4699 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -234,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				C377CE972E3BABBF006B828C /* PokemonListModel.swift */,
+				C3B096932E3D02CF00682A80 /* PokemonRealmModel.swift */,
+				C3E475DE2E3E0D1D00D40256 /* PokemonListResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -336,6 +344,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C3B096902E3CEB8800682A80 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C3B096912E3CEB9900682A80 /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		C3CA1B412E3B24EB00E9699E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,7 +439,6 @@
 				C3CA1B422E3B24F100E9699E /* UseCase */,
 				C3CA1B412E3B24EB00E9699E /* Repository */,
 				C3CD6CC62E3989F40093C929 /* ViewModel */,
-				C3CD6CC52E3989EF0093C929 /* Model */,
 				C3CD6CC42E3989EB0093C929 /* View */,
 			);
 			path = Login;
@@ -448,13 +463,6 @@
 				C3CD6CC82E398A0D0093C929 /* LoginViewController.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		C3CD6CC52E3989EF0093C929 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		C3CD6CC62E3989F40093C929 /* ViewModel */ = {
@@ -540,6 +548,7 @@
 		C3CD6D182E39C7BC0093C929 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				C3B096902E3CEB8800682A80 /* Extension */,
 				C3CD6D192E39C7C40093C929 /* State */,
 				C3CD6D272E39D24E0093C929 /* Utility.swift */,
 				C3FF0CEC2E3CAD9E009F4699 /* CheckConnection.swift */,
@@ -722,6 +731,7 @@
 			files = (
 				C377CE9A2E3BABFD006B828C /* HomepageRepositoryProtocol.swift in Sources */,
 				C3CD6CCF2E398DDA0093C929 /* CoreTextField.swift in Sources */,
+				C3E475DF2E3E0D1D00D40256 /* PokemonListResult.swift in Sources */,
 				C3CD6D132E39C1C60093C929 /* RegisterRepositoryProtocol.swift in Sources */,
 				C3CA1B552E3B680D00E9699E /* HomepageViewController.swift in Sources */,
 				C377CE982E3BABBF006B828C /* PokemonListModel.swift in Sources */,
@@ -746,6 +756,7 @@
 				C377CED12E3BD3FD006B828C /* DetailPokemonUseCaseImpl.swift in Sources */,
 				C3CD6D1D2E39C80C0093C929 /* RegisterValidationState.swift in Sources */,
 				C3CA1B4A2E3B25DC00E9699E /* LoginUseCaseImpl.swift in Sources */,
+				C3B096942E3D02CF00682A80 /* PokemonRealmModel.swift in Sources */,
 				C377CEC82E3BD142006B828C /* DetailPokemonRepositoryProtocol.swift in Sources */,
 				C3FF0CDF2E3C59A2009F4699 /* ErrorView.swift in Sources */,
 				C377CEA92E3BB25B006B828C /* HomepageViewModel.swift in Sources */,
@@ -758,6 +769,7 @@
 				C3FF0CE32E3C5E9B009F4699 /* ErrorStateEnum.swift in Sources */,
 				C377CEB42E3BC0E8006B828C /* ProfileUseCaseImpl.swift in Sources */,
 				C377CECA2E3BD155006B828C /* DetailPokemonRepositoryImpl.swift in Sources */,
+				C3B096922E3CEB9900682A80 /* UIViewController+Extension.swift in Sources */,
 				C3CD6D1F2E39C84F0093C929 /* LoginValidationState.swift in Sources */,
 				C36DA5922E38AF0B00E74202 /* AppDelegate.swift in Sources */,
 				C377CEB72E3BC51B006B828C /* ProfileViewModel.swift in Sources */,

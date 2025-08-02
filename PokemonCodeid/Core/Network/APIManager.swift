@@ -13,8 +13,9 @@ enum APIEndPoint: String {
 }
 
 enum NetworkErrorType {
-    case empty
+    case emptyApi
     case failed
+    case noConnection
 }
 
 class APIManager {

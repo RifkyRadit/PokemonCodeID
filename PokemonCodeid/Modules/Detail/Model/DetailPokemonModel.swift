@@ -25,7 +25,7 @@ struct AbilitiesModel: Codable, Equatable {
     }
 }
 
-// MARK: - Species
+// MARK: - Ability
 struct Ability: Codable, Equatable {
     let name: String
     let url: String

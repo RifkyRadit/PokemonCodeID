@@ -16,6 +16,25 @@ class MainTabViewController: ButtonBarPagerTabStripViewController {
         configureButtonBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = "Pokemon"
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        buttonBarView.frame.origin.y = 100
+        containerView.frame.origin.y = buttonBarView.frame.maxY
+        containerView.frame.size.height = view.frame.height - containerView.frame.origin.y
+    }
+    
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        let child1 = HomepageViewController()
+        let child2 = ProfileViewController()
+        return [child1, child2]
+    }
+    
     // MARK: - Configuration
     func configureButtonBar() {
         settings.style.buttonBarBackgroundColor = .white
@@ -38,24 +57,5 @@ class MainTabViewController: ButtonBarPagerTabStripViewController {
             oldCell?.label.textColor = .black
             newCell?.label.textColor = UIColor(named: "color_main_red")
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.title = "Pokemon"
-        self.navigationController?.isNavigationBarHidden = false
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        buttonBarView.frame.origin.y = 100
-        containerView.frame.origin.y = buttonBarView.frame.maxY
-        containerView.frame.size.height = view.frame.height - containerView.frame.origin.y
-    }
-    
-    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let child1 = HomepageViewController()
-        let child2 = ProfileViewController()
-        return [child1, child2]
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CryptoKit
 
 func showErrorAlert(errorMessage: String) -> UIAlertController {
     let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: .alert)
@@ -55,4 +56,22 @@ func getValidateAreaGestureTapText(gesture: UITapGestureRecognizer, label: UILab
     let rangeOfText = fullText.range(of: rangeText)
     
     return NSLocationInRange(characterIndex, rangeOfText)
+}
+
+func generateSalt(length: Int = 16) -> String {
+    let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()"
+    return String((0..<length).compactMap { _ in chars.randomElement() })
+}
+
+func hashPassword(_ password: String, salt: String) -> String {
+    let combinedPass = password + salt
+    let data = Data(combinedPass.utf8)
+    let hashed = SHA256.hash(data: data)
+    return hashed.map { String(format: "%02x", $0) }.joined()
+}
+
+func validateEmail(email: String) -> Bool {
+    let emailRegex = "^(?!.*\\.\\.)[a-zA-Z0-9]+([.%+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+    let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+    return predicate.evaluate(with: email)
 }

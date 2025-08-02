@@ -14,7 +14,9 @@ class HomepageUseCaseImpl: HomepageUseCaseProtocol {
         self.repository = repository
     }
     
-    func fetchPokemonList(offset: String, completion: @escaping ([PokemonListModelData]?, NetworkErrorType?) -> Void) {
-        repository.getPokemonList(offset: offset, completion: completion)
+    func fetchPokemonList(offset: String, completion: @escaping (PokemonListResult) -> Void) {
+        repository.getPokemonList(offset: offset) { result in
+            completion(result)
+        }
     }
 }

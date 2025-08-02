@@ -21,7 +21,8 @@ class LoginUseCaseImpl: LoginUseCaseProtocol {
             return .userNotFound
         }
         
-        if !data.password.isEmpty, data.password == password {
+        let inputHash = hashPassword(password, salt: data.salt)
+        if inputHash == data.hashPass {
             UserDefaults.standard.setValue(username, forKey: "usernameProfile")
             return .successLogin
         } else {

@@ -12,4 +12,5 @@ enum RegisterValidationState {
     case usernameAlready
     case emailAlready
     case passowrdNotSame
+    case wrongEmailFormat
 }

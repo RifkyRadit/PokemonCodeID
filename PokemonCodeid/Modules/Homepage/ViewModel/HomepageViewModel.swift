@@ -14,6 +14,7 @@ enum HomepageViewState {
     case error
     case empty
     case showContent(_ data: [PokemonListModelData])
+    case noConnection
 }
 
 protocol HomepageViewModelType {
@@ -22,7 +23,8 @@ protocol HomepageViewModelType {
 }
 
 protocol HomepageViewModelInput {
-    func viewDidLoad(offset: Int)
+    func viewDidLoad()
+    func loadNextPage()
 }
 
 protocol HomepageViewModelOutput {
@@ -35,35 +37,57 @@ final class HomepageViewModel: HomepageViewModelInput {
     
     private var stateVariable = BehaviorRelay<HomepageViewState?>(value: nil)
     
+    private var totalCountList = 0
+    private var currentOffset = 0
+    private var pokemonList = [PokemonListModelData]()
+    
     init(homepageUseCase: HomepageUseCaseProtocol = HomepageUseCaseImpl()) {
         self.homepageUseCase = homepageUseCase
     }
     
-    func viewDidLoad(offset: Int) {
+    func viewDidLoad() {
+        currentOffset = 0
+        pokemonList = []
         stateVariable.accept(.loading)
-        getPokemonList(offset: "\(offset)")
+        getPokemonList()
+    }
+    
+    func loadNextPage() {
+        stateVariable.accept(.loading)
+        guard pokemonList.count < totalCountList else {
+            return
+        }
+        
+        getPokemonList()
     }
 }
 
 extension HomepageViewModel {
-    private func getPokemonList(offset: String) {
+    private func getPokemonList() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             guard let self else { return }
             
-            self.homepageUseCase.fetchPokemonList(offset: offset) { data, errorState in
-                if let errorState = errorState {
-                    switch errorState {
-                    case .empty:
-                        self.stateVariable.accept(.empty)
-                    case .failed:
-                        self.stateVariable.accept(.error)
-                    }
-                } else {
-                    if let dataList = data {
-                        self.stateVariable.accept(dataList.isEmpty ? .empty : .showContent(dataList))
-                    } else {
-                        self.stateVariable.accept(.empty)
-                    }
+            self.homepageUseCase.fetchPokemonList(offset: "\(self.currentOffset)") { result in
+                self.totalCountList = UserDefaults.standard.integer(forKey: "countAllPokemonList")
+                
+                if let resultData = result.data, !resultData.isEmpty {
+                    self.pokemonList.append(contentsOf: resultData)
+                    self.currentOffset += 10
+                }
+                
+                self.stateVariable.accept(.showContent(self.pokemonList))
+                
+                guard let resultError = result.error, self.currentOffset == 0 else {
+                    return
+                }
+                
+                switch resultError {
+                case .emptyApi:
+                    self.stateVariable.accept(.empty)
+                case .failed:
+                    self.stateVariable.accept(.error)
+                case .noConnection:
+                    self.stateVariable.accept(.noConnection)
                 }
             }
         }

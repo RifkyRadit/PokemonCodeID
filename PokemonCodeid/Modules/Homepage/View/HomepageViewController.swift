@@ -37,7 +37,7 @@ class HomepageViewController: UIViewController, IndicatorInfoProvider {
         setupView()
         setupTableView()
         bindViewModel()
-        viewModel.viewDidLoad(offset: offset)
+        viewModel.viewDidLoad()
     }
     
     func indicatorInfo(for pagerTabStripController: XLPagerTabStrip.PagerTabStripViewController) -> XLPagerTabStrip.IndicatorInfo {
@@ -81,64 +81,10 @@ class HomepageViewController: UIViewController, IndicatorInfoProvider {
             .disposed(by: disposeBag)
     }
     
-    private func configureState(_ state: HomepageViewState) {
-        refreshControl.endRefreshing()
-        switch state {
-        case .loading:
-            errorView.isHidden = true
-            contentView.isHidden = !isLoadingMore
-            
-            let progressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
-            progressHUD.label.text = "Loading...."
-            
-        case .error:
-            MBProgressHUD.hide(for: self.view, animated: true)
-            
-            errorView.isHidden = false
-            contentView.isHidden = true
-            errorView.configureContent(with: .generalError)
-            
-        case .empty:
-            MBProgressHUD.hide(for: self.view, animated: true)
-            
-            errorView.isHidden = false
-            contentView.isHidden = true
-            errorView.configureContent(with: .emptyPokemonList)
-            
-        case .showContent(let dataList):
-            MBProgressHUD.hide(for: self.view, animated: true)
-            
-            errorView.isHidden = true
-            contentView.isHidden = false
-            
-            if isLoadingMore {
-                pokemonDataList.append(contentsOf: dataList)
-                isLoadingMore = false
-            } else {
-                pokemonDataList = dataList
-            }
-            
-            reloadData()
-        }
-    }
-    
-    private func reloadData() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            self.pokemonTableView.reloadData()
-        }
-    }
-    
-    @objc private func pullToRefreshList() {
-        refreshControl.beginRefreshing()
-        offset = 0
-        isLoadingMore = false
-        viewModel.viewDidLoad(offset: offset)
-    }
-    
     @objc private func textFieldsDidChange() {
         if let searchText = searchTextField.text, searchText.isEmpty {
             isSearchActive = false
+            searchTextField.resignFirstResponder()
             reloadData()
         }
     }
@@ -156,11 +102,74 @@ class HomepageViewController: UIViewController, IndicatorInfoProvider {
         let textFieldText = searchTextField.text ?? ""
         let filterList = pokemonDataList.filter({ $0.name.lowercased().contains(textFieldText) })
         self.filterList = filterList
+        searchTextField.resignFirstResponder()
         reloadData()
     }
     
 }
 
+// MARK: - Configure View
+extension HomepageViewController {
+    private func configureState(_ state: HomepageViewState) {
+        refreshControl.endRefreshing()
+        switch state {
+        case .loading:
+            errorView.isHidden = true
+            contentView.isHidden = !isLoadingMore
+            
+            let progressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
+            progressHUD.label.text = "Loading...."
+            
+        case .error:
+            handleErrorView()
+            errorView.configureContent(with: .generalError)
+            
+        case .empty:
+            handleErrorView()
+            errorView.configureContent(with: .emptyPokemonList)
+            
+        case .noConnection:
+            handleErrorView()
+            errorView.configureContent(with: .noConnection)
+            
+        case .showContent(let dataList):
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            errorView.isHidden = true
+            contentView.isHidden = false
+            
+            if isLoadingMore {
+                isLoadingMore = false
+            }
+            
+            pokemonDataList = dataList
+            reloadData()
+        }
+    }
+    
+    private func handleErrorView() {
+        MBProgressHUD.hide(for: self.view, animated: true)
+        
+        errorView.isHidden = false
+        contentView.isHidden = true
+    }
+    
+    private func reloadData() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.pokemonTableView.reloadData()
+        }
+    }
+    
+    @objc private func pullToRefreshList() {
+        refreshControl.beginRefreshing()
+        offset = 0
+        isLoadingMore = false
+        viewModel.viewDidLoad()
+    }
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension HomepageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearchActive {
@@ -216,16 +225,16 @@ extension HomepageViewController: UITableViewDelegate, UITableViewDataSource {
         
         if position >= (contentHeight - frameHeight + 50), !isLoadingMore, !isSearchActive {
             isLoadingMore = true
-            offset += 10
-            viewModel.viewDidLoad(offset: offset)
+            viewModel.inputs.loadNextPage()
         }
     }
 }
 
+// MARK: - ErrorStateViewDelegate
 extension HomepageViewController: ErrorStateViewDelegate {
     func didTapRetryButton() {
         offset = 0
         isLoadingMore = false
-        viewModel.viewDidLoad(offset: offset)
+        viewModel.viewDidLoad()
     }
 }

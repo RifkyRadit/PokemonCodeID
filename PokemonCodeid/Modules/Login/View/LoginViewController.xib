@@ -26,31 +26,37 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6A6-I5-zfC" userLabel="ContentView">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_header_login" translatesAutoresizingMaskIntoConstraints="NO" id="piE-Ac-pYL">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="393"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="piE-Ac-pYL">
+                            <rect key="frame" x="121.66666666666669" y="16" width="150" height="150"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="393" id="Pbr-25-mkr"/>
-                                <constraint firstAttribute="width" secondItem="piE-Ac-pYL" secondAttribute="height" multiplier="1:1" id="UPT-os-anB"/>
+                                <constraint firstAttribute="width" constant="150" id="67o-dj-Gjh"/>
+                                <constraint firstAttribute="height" constant="150" id="9AJ-he-Uth"/>
                             </constraints>
                         </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Masuk dan Lihat Semua Pokémon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqc-t9-aFc">
+                            <rect key="frame" x="24" y="182" width="345" height="23"/>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P43-aP-zc1" userLabel="userNameField" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
-                            <rect key="frame" x="30" y="417" width="333" height="52"/>
+                            <rect key="frame" x="30" y="237" width="333" height="48"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="52" id="PMe-Em-bQt"/>
+                                <constraint firstAttribute="height" constant="48" id="PMe-Em-bQt"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSj-ZZ-yFt" userLabel="passwordField" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
-                            <rect key="frame" x="30" y="485" width="333" height="52"/>
+                            <rect key="frame" x="30" y="301" width="333" height="48"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="52" id="qo4-K9-kcq"/>
+                                <constraint firstAttribute="height" constant="48" id="qo4-K9-kcq"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxA-jo-nkb">
-                            <rect key="frame" x="30" y="569" width="333" height="52"/>
+                            <rect key="frame" x="30" y="381" width="333" height="52"/>
                             <color key="backgroundColor" name="color_main_red"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="CBD-Mo-kYL"/>
@@ -65,7 +71,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum punya akun ? Silahkan Mendaftar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xn-G8-m80">
-                            <rect key="frame" x="30" y="637" width="333" height="17.333333333333371"/>
+                            <rect key="frame" x="30" y="449" width="333" height="17.333333333333314"/>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -75,19 +81,21 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="YxA-jo-nkb" secondAttribute="trailing" constant="30" id="05g-n8-vu0"/>
                         <constraint firstItem="P43-aP-zc1" firstAttribute="leading" secondItem="6A6-I5-zfC" secondAttribute="leading" constant="30" id="5Vf-Di-mh4"/>
-                        <constraint firstItem="P43-aP-zc1" firstAttribute="top" secondItem="piE-Ac-pYL" secondAttribute="bottom" constant="24" id="81a-sT-2kP"/>
+                        <constraint firstItem="P43-aP-zc1" firstAttribute="top" secondItem="oqc-t9-aFc" secondAttribute="bottom" constant="32" id="5wc-u3-qXA"/>
+                        <constraint firstAttribute="trailing" secondItem="oqc-t9-aFc" secondAttribute="trailing" constant="24" id="68R-vy-RIA"/>
                         <constraint firstItem="JSj-ZZ-yFt" firstAttribute="top" secondItem="P43-aP-zc1" secondAttribute="bottom" constant="16" id="9sB-Zh-cgv"/>
+                        <constraint firstItem="piE-Ac-pYL" firstAttribute="top" secondItem="6A6-I5-zfC" secondAttribute="top" constant="16" id="FvD-Mf-e36"/>
                         <constraint firstItem="YxA-jo-nkb" firstAttribute="top" secondItem="JSj-ZZ-yFt" secondAttribute="bottom" constant="32" id="Gqv-FJ-lAp"/>
-                        <constraint firstAttribute="trailing" secondItem="piE-Ac-pYL" secondAttribute="trailing" id="H6Z-lp-VgU"/>
                         <constraint firstItem="YxA-jo-nkb" firstAttribute="leading" secondItem="6A6-I5-zfC" secondAttribute="leading" constant="30" id="JMW-hu-pqi"/>
                         <constraint firstItem="9Xn-G8-m80" firstAttribute="top" secondItem="YxA-jo-nkb" secondAttribute="bottom" constant="16" id="MgU-HO-vd1"/>
-                        <constraint firstItem="piE-Ac-pYL" firstAttribute="leading" secondItem="6A6-I5-zfC" secondAttribute="leading" id="Qhy-4T-XPN"/>
-                        <constraint firstItem="piE-Ac-pYL" firstAttribute="top" secondItem="6A6-I5-zfC" secondAttribute="top" id="RhU-Ri-XnE"/>
+                        <constraint firstItem="oqc-t9-aFc" firstAttribute="leading" secondItem="6A6-I5-zfC" secondAttribute="leading" constant="24" id="PdS-ip-sJL"/>
                         <constraint firstItem="9Xn-G8-m80" firstAttribute="leading" secondItem="6A6-I5-zfC" secondAttribute="leading" constant="30" id="aUZ-s1-8zq"/>
                         <constraint firstAttribute="trailing" secondItem="JSj-ZZ-yFt" secondAttribute="trailing" constant="30" id="q42-vV-bBv"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9Xn-G8-m80" secondAttribute="bottom" constant="32" id="qUY-X7-fZh"/>
                         <constraint firstItem="JSj-ZZ-yFt" firstAttribute="leading" secondItem="6A6-I5-zfC" secondAttribute="leading" constant="30" id="qos-zr-U7T"/>
+                        <constraint firstItem="piE-Ac-pYL" firstAttribute="centerX" secondItem="6A6-I5-zfC" secondAttribute="centerX" id="sSz-BI-noX"/>
                         <constraint firstAttribute="trailing" secondItem="9Xn-G8-m80" secondAttribute="trailing" constant="30" id="sZP-9e-fbr"/>
+                        <constraint firstItem="oqc-t9-aFc" firstAttribute="top" secondItem="piE-Ac-pYL" secondAttribute="bottom" constant="16" id="tKk-kq-Ucx"/>
                         <constraint firstAttribute="trailing" secondItem="P43-aP-zc1" secondAttribute="trailing" constant="30" id="tr6-Rz-bXC"/>
                     </constraints>
                 </view>
@@ -95,8 +103,8 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="6A6-I5-zfC" secondAttribute="bottom" id="EPx-Vl-0TL"/>
-                <constraint firstItem="6A6-I5-zfC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LYE-tZ-c55"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6A6-I5-zfC" secondAttribute="bottom" id="EPx-Vl-0TL"/>
+                <constraint firstItem="6A6-I5-zfC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LYE-tZ-c55"/>
                 <constraint firstItem="6A6-I5-zfC" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="dZb-4d-SfB"/>
                 <constraint firstItem="6A6-I5-zfC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vlE-eT-cTG"/>
             </constraints>
@@ -104,7 +112,7 @@
         </view>
     </objects>
     <resources>
-        <image name="image_header_login" width="360" height="307"/>
+        <image name="icon_pokeball" width="521" height="528"/>
         <namedColor name="color_main_red">
             <color red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

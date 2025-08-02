@@ -11,5 +11,6 @@ class UserModel: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var username: String
     @Persisted var email: String
-    @Persisted var password: String
+    @Persisted var salt: String
+    @Persisted var hashPass: String
 }

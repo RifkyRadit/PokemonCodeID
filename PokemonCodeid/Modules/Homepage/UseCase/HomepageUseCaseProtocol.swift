@@ -8,5 +8,5 @@
 import Foundation
 
 protocol HomepageUseCaseProtocol {
-    func fetchPokemonList(offset: String, completion: @escaping(_ data: [PokemonListModelData]?, _ errorState: NetworkErrorType?) -> Void)
+    func fetchPokemonList(offset: String, completion: @escaping(PokemonListResult) -> Void)
 }

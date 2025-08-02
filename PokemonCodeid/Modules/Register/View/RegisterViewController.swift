@@ -17,7 +17,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordField: CoreTextField!
     @IBOutlet weak var confirmPasswordField: CoreTextField!
     @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var LoginText: UILabel!
+    @IBOutlet weak var loginLabel: UILabel!
     
     private(set) var viewModel = RegisterViewModel()
     private let disposeBag = DisposeBag()
@@ -27,7 +27,6 @@ class RegisterViewController: UIViewController {
         
         setupView()
         bindViewModel()
-        registerKeyboardListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,10 +50,8 @@ class RegisterViewController: UIViewController {
         [usernameField, emailField, passwordField, confirmPasswordField].forEach {
             $0?.textField.addTarget(self, action: #selector(textFieldsDidChange), for: .editingChanged)
         }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+        
+        hideKeyboardWhenTappedArround()
     }
     
     func bindViewModel() {
@@ -89,10 +86,10 @@ class RegisterViewController: UIViewController {
 extension RegisterViewController {
     private func setupLoginText() {
         let loginText = "Sudah punya akun? Silahkan masuk"
-        LoginText.attributedText = getCustomAttributeText(fullText: loginText, rangeText: "masuk")
-        LoginText.isUserInteractionEnabled = true
+        loginLabel.attributedText = getCustomAttributeText(fullText: loginText, rangeText: "masuk")
+        loginLabel.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleLabelTap(_ :)))
-        LoginText.addGestureRecognizer(tapGesture)
+        loginLabel.addGestureRecognizer(tapGesture)
     }
     
     @objc private func handleLabelTap(_ gesture: UITapGestureRecognizer) {
@@ -105,31 +102,6 @@ extension RegisterViewController {
         if getValidateAreaGestureTapText(gesture: gesture, label: label, attributedText: attributedText, rangeText: "masuk") {
             self.navigationController?.popViewController(animated: true)
         }
-    }
-}
-
-// MARK: - Keyboard Listener
-extension RegisterViewController {
-    private func registerKeyboardListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        let tapGestureContentView = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardAction))
-        contentView.addGestureRecognizer(tapGestureContentView)
-    }
-    
-    @objc func dismissKeyboardAction() {
-        view.endEditing(true)
-    }
-    
-    @objc private func keyboardWillShow(_ notification: Notification) {
-        guard let userInfo = notification.userInfo, let keyboardHeight = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height else { return }
-        
-        self.contentView.frame.origin.y = -keyboardHeight + 50
-    }
-    
-    @objc private func keyboardWillHide(_ notification: Notification) {
-        self.contentView.frame.origin.y = 0
     }
 }
 
@@ -176,6 +148,10 @@ extension RegisterViewController {
             
         case .passowrdNotSame:
             let errorAlert = showErrorAlert(errorMessage: "Registrasi Gagal. Passowrd tidak sesuai, silahkan lakukan pengecekan kembali.")
+            self.present(errorAlert, animated: true)
+            
+        case .wrongEmailFormat:
+            let errorAlert = showErrorAlert(errorMessage: "Registrasi Gagal. Email tidak sesuai, harap perhatikan format email.")
             self.present(errorAlert, animated: true)
         }
     }

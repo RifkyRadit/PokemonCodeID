@@ -10,7 +10,7 @@ import Alamofire
 
 class DetailPokemonRepositoryImpl: DetailPokemonRepositoryProtocol {
     func getDetailPokemon(name: String, completion: @escaping ([AbilitiesModel]?, NetworkErrorType?) -> Void) {
-        var endpoint = APIEndPoint.pokemon.rawValue + "/\(name)"
+        let endpoint = APIEndPoint.pokemon.rawValue + "/\(name)"
         
         APIManager.shared.requestURL(endPoint: endpoint, method: .get) { result in
             switch result {
@@ -27,7 +27,7 @@ class DetailPokemonRepositoryImpl: DetailPokemonRepositoryProtocol {
                     completion(nil, .failed)
                 }
                 
-            case .failure(let failure):
+            case .failure:
                 completion(nil, .failed)
             }
         }

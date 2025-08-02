@@ -57,11 +57,14 @@ extension DetailPokemonViewModel {
             self.detailPokemonUseCase.fetchDetailPokemon(name: name) { data, errorState in
                 if let errorState = errorState {
                     switch errorState {
-                    case .empty:
+                    case .emptyApi:
                         self.stateVariable.accept(.failure(.emptyAbility))
                     case .failed:
                         self.stateVariable.accept(.failure(.generalError))
+                    case .noConnection:
+                        self.stateVariable.accept(.failure(.noConnection))
                     }
+                    
                 } else {
                     if let dataPokemon = data {
                         self.stateVariable.accept(dataPokemon.isEmpty ? .failure(.emptyAbility) : .showContent(dataPokemon))

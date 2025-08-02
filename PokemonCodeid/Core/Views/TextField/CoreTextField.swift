@@ -14,6 +14,8 @@ class CoreTextField: UIView {
     @IBOutlet weak var showPasswordButton: UIButton!
     
     private var isPasswordHiding: Bool = true
+    private var shouldSetupPassword = false
+    private var isPasswordField = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,27 +39,24 @@ class CoreTextField: UIView {
     
     private func setupView() {
         contentView.layer.cornerRadius = 10
-        contentView.layer.borderWidth = 3
-        contentView.layer.borderColor = UIColor(named: "color_gray")?.cgColor
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.black.cgColor
         contentView.layer.masksToBounds = true
     }
     
     func configureCustomTextField(isPassowrdField: Bool = false, placeholderText: String) {
         showPasswordButton.setImage(UIImage(named: "icon_hide_password"), for: .normal)
         showPasswordButton.isHidden = !isPassowrdField
+        textField.autocorrectionType = .no
+        textField.textContentType = .oneTimeCode
         textField.isSecureTextEntry = isPassowrdField
-        textField.placeholder = placeholderText
+        
+        textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [.foregroundColor: UIColor.black])
     }
     
     @IBAction func showPasswordButtonAction(_ sender: Any) {
-        if isPasswordHiding {
-            showPasswordButton.setImage(UIImage(named: "icon_show_password"), for: .normal)
-            textField.isSecureTextEntry = false
-            isPasswordHiding = false
-        } else {
-            showPasswordButton.setImage(UIImage(named: "icon_hide_password"), for: .normal)
-            textField.isSecureTextEntry = true
-            isPasswordHiding = true
-        }
+        isPasswordHiding.toggle()
+        showPasswordButton.setImage(UIImage(named: isPasswordHiding ? "icon_hide_password" : "icon_show_password"), for: .normal)
+        textField.isSecureTextEntry = isPasswordHiding
     }
 }

@@ -31,7 +31,6 @@ class LoginViewController: UIViewController {
 
         setupView()
         bindViewModel()
-        registerKeyboardListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,10 +52,8 @@ class LoginViewController: UIViewController {
         [userNameField, passwordField].forEach {
             $0?.textField.addTarget(self, action: #selector(textFieldsDidChange), for: .editingChanged)
         }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+        
+        hideKeyboardWhenTappedArround()
     }
     
     func bindViewModel() {
@@ -81,7 +78,10 @@ class LoginViewController: UIViewController {
         
         viewModel.inputs.loginUser(username: usernameText, password: passwordText)
     }
-    
+}
+
+// MARK: - Configure View
+extension LoginViewController {
     private func configureState(state: LoginViewState) {
         switch state {
         case .loading:
@@ -119,7 +119,7 @@ class LoginViewController: UIViewController {
     }
     
     private func navigateToRootMainTabbar() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, 
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let sceneDelegate = windowScene.delegate as? SceneDelegate,
               let window = sceneDelegate.window
         else {
@@ -158,30 +158,5 @@ extension LoginViewController {
             let registerViewController = RegisterViewController()
             self.navigationController?.pushViewController(registerViewController, animated: true)
         }
-    }
-}
-
-// MARK: - Keyboard Listener
-extension LoginViewController {
-    private func registerKeyboardListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        let tapGestureContentView = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardAction))
-        loginContentView.addGestureRecognizer(tapGestureContentView)
-    }
-    
-    @objc func dismissKeyboardAction() {
-        view.endEditing(true)
-    }
-    
-    @objc private func keyboardWillShow(_ notification: Notification) {
-        guard let userInfo = notification.userInfo, let _ = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height else { return }
-        
-        self.loginContentView.frame.origin.y = -32
-    }
-    
-    @objc private func keyboardWillHide(_ notification: Notification) {
-        self.loginContentView.frame.origin.y = 0
     }
 }

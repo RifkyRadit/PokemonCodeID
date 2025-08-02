@@ -12,10 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="PokemonCodeid" customModuleProvider="target">
             <connections>
-                <outlet property="LoginText" destination="C7s-Bb-m0h" id="P1B-Uv-bMV"/>
                 <outlet property="confirmPasswordField" destination="ajv-pi-hbt" id="e38-Lc-LG4"/>
                 <outlet property="contentView" destination="r5f-i8-b8o" id="8xg-dg-ZMs"/>
                 <outlet property="emailField" destination="FSD-G0-n6I" id="vLF-gi-g4l"/>
+                <outlet property="loginLabel" destination="C7s-Bb-m0h" id="h9T-RM-j2I"/>
                 <outlet property="passwordField" destination="gTo-oW-mus" id="EpQ-I4-oEE"/>
                 <outlet property="registerButton" destination="tOw-ve-xVI" id="fsv-dU-YRX"/>
                 <outlet property="usernameField" destination="2F8-Hf-uKU" id="RVL-hd-IWm"/>
@@ -28,44 +28,44 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-i8-b8o">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_header_register" translatesAutoresizingMaskIntoConstraints="NO" id="9pf-1C-RPs">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="393"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="9pf-1C-RPs" secondAttribute="height" multiplier="1:1" id="WGK-kQ-WmW"/>
-                            </constraints>
-                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabung untuk Melihat Semua Pokémon" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCA-nm-2kp">
+                            <rect key="frame" x="24" y="16" width="345" height="46"/>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2F8-Hf-uKU" userLabel="usernameField" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
-                            <rect key="frame" x="30" y="409" width="333" height="52"/>
+                            <rect key="frame" x="30" y="94" width="333" height="48"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="52" id="ZXM-Qs-ORb"/>
+                                <constraint firstAttribute="height" constant="48" id="ZXM-Qs-ORb"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSD-G0-n6I" userLabel="emailField" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
-                            <rect key="frame" x="30" y="477" width="333" height="52"/>
+                            <rect key="frame" x="30" y="158" width="333" height="48"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="52" id="IuE-Pf-JNv"/>
+                                <constraint firstAttribute="height" constant="48" id="IuE-Pf-JNv"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTo-oW-mus" userLabel="passwordField" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
-                            <rect key="frame" x="30" y="545" width="333" height="52"/>
+                            <rect key="frame" x="30" y="222" width="333" height="48"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="52" id="ENl-OT-BlO"/>
+                                <constraint firstAttribute="height" constant="48" id="ENl-OT-BlO"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajv-pi-hbt" userLabel="confirmPasswordField" customClass="CoreTextField" customModule="PokemonCodeid" customModuleProvider="target">
-                            <rect key="frame" x="30" y="613" width="333" height="52"/>
+                            <rect key="frame" x="30" y="286" width="333" height="48"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="52" id="DaV-ER-uKN"/>
+                                <constraint firstAttribute="height" constant="48" id="DaV-ER-uKN"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOw-ve-xVI">
-                            <rect key="frame" x="30" y="697" width="333" height="52"/>
+                            <rect key="frame" x="30" y="366" width="333" height="52"/>
                             <color key="backgroundColor" name="color_main_red"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="xVi-gY-O4l"/>
@@ -78,7 +78,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7s-Bb-m0h">
-                            <rect key="frame" x="30" y="765" width="333" height="20.333333333333371"/>
+                            <rect key="frame" x="30" y="434" width="333" height="20.333333333333314"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -95,35 +95,34 @@
                         <constraint firstItem="tOw-ve-xVI" firstAttribute="top" secondItem="ajv-pi-hbt" secondAttribute="bottom" constant="32" id="Lx5-pR-UEo"/>
                         <constraint firstItem="ajv-pi-hbt" firstAttribute="top" secondItem="gTo-oW-mus" secondAttribute="bottom" constant="16" id="OEo-J9-Re5"/>
                         <constraint firstItem="gTo-oW-mus" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="P0g-El-LkO"/>
+                        <constraint firstItem="nCA-nm-2kp" firstAttribute="top" secondItem="r5f-i8-b8o" secondAttribute="top" constant="16" id="PSi-oz-jXG"/>
                         <constraint firstItem="C7s-Bb-m0h" firstAttribute="top" secondItem="tOw-ve-xVI" secondAttribute="bottom" constant="16" id="QTd-Ad-biq"/>
+                        <constraint firstItem="nCA-nm-2kp" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="24" id="TXA-j7-KN2"/>
                         <constraint firstItem="FSD-G0-n6I" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="WfH-vg-fTo"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C7s-Bb-m0h" secondAttribute="bottom" constant="32" id="Whs-dE-bgw"/>
+                        <constraint firstAttribute="trailing" secondItem="nCA-nm-2kp" secondAttribute="trailing" constant="24" id="ZGa-ax-nDg"/>
                         <constraint firstAttribute="trailing" secondItem="tOw-ve-xVI" secondAttribute="trailing" constant="30" id="k4K-8R-Cg9"/>
                         <constraint firstItem="C7s-Bb-m0h" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="kUr-Z9-UKK"/>
-                        <constraint firstItem="2F8-Hf-uKU" firstAttribute="top" secondItem="9pf-1C-RPs" secondAttribute="bottom" constant="16" id="mcB-5K-DeG"/>
-                        <constraint firstAttribute="trailing" secondItem="9pf-1C-RPs" secondAttribute="trailing" id="n7z-NI-1zV"/>
-                        <constraint firstItem="9pf-1C-RPs" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" id="n8q-g7-nxU"/>
                         <constraint firstItem="2F8-Hf-uKU" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="pLI-RC-WfO"/>
                         <constraint firstItem="FSD-G0-n6I" firstAttribute="top" secondItem="2F8-Hf-uKU" secondAttribute="bottom" constant="16" id="rfu-YJ-ruZ"/>
+                        <constraint firstItem="2F8-Hf-uKU" firstAttribute="top" secondItem="nCA-nm-2kp" secondAttribute="bottom" constant="32" id="rs4-pW-RtZ"/>
                         <constraint firstItem="tOw-ve-xVI" firstAttribute="leading" secondItem="r5f-i8-b8o" secondAttribute="leading" constant="30" id="wPz-TO-cbT"/>
                         <constraint firstAttribute="trailing" secondItem="C7s-Bb-m0h" secondAttribute="trailing" constant="30" id="yjp-2f-1Ps"/>
-                        <constraint firstItem="9pf-1C-RPs" firstAttribute="top" secondItem="r5f-i8-b8o" secondAttribute="top" id="zpB-ia-8UE"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="r5f-i8-b8o" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2HA-9X-het"/>
+                <constraint firstItem="r5f-i8-b8o" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2HA-9X-het"/>
                 <constraint firstItem="r5f-i8-b8o" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BRk-MO-9oo"/>
                 <constraint firstItem="r5f-i8-b8o" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="lwS-5E-Zan"/>
-                <constraint firstAttribute="bottom" secondItem="r5f-i8-b8o" secondAttribute="bottom" id="qoL-Vk-V16"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="r5f-i8-b8o" secondAttribute="bottom" id="qoL-Vk-V16"/>
             </constraints>
-            <point key="canvasLocation" x="115" y="-11"/>
+            <point key="canvasLocation" x="113.74045801526717" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>
-        <image name="image_header_register" width="360" height="307"/>
         <namedColor name="color_main_red">
             <color red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

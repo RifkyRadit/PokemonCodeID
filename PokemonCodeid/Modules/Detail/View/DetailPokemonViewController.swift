@@ -47,6 +47,36 @@ class DetailPokemonViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    @objc
+    private func handleBackButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func setupCollectionView() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.minimumInteritemSpacing = 8
+        flowLayout.minimumLineSpacing = 8
+        
+        abilityCollectionView.register(UINib(nibName: "AbilityItemCell", bundle: nil), forCellWithReuseIdentifier: "abilityItemCell")
+        abilityCollectionView.register(UINib(nibName: "AbilityErrorCell", bundle: nil), forCellWithReuseIdentifier: "abilityErrorCell")
+        abilityCollectionView.delegate = self
+        abilityCollectionView.dataSource = self
+        abilityCollectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        abilityCollectionView.collectionViewLayout = flowLayout
+        abilityCollectionView.showsHorizontalScrollIndicator = false
+    }
+    
+    private func reloadData() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.abilityCollectionView.reloadData()
+        }
+    }
+}
+
+// MARK: - Configure View
+extension DetailPokemonViewController {
     private func configureState(_ state: DetailViewState) {
         switch state {
         case .loading:
@@ -90,35 +120,9 @@ class DetailPokemonViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backView)
     }
-    
-    @objc
-    private func handleBackButton() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    private func setupCollectionView() {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .vertical
-        flowLayout.minimumInteritemSpacing = 8
-        flowLayout.minimumLineSpacing = 8
-        
-        abilityCollectionView.register(UINib(nibName: "AbilityItemCell", bundle: nil), forCellWithReuseIdentifier: "abilityItemCell")
-        abilityCollectionView.register(UINib(nibName: "AbilityErrorCell", bundle: nil), forCellWithReuseIdentifier: "abilityErrorCell")
-        abilityCollectionView.delegate = self
-        abilityCollectionView.dataSource = self
-        abilityCollectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-        abilityCollectionView.collectionViewLayout = flowLayout
-        abilityCollectionView.showsHorizontalScrollIndicator = false
-    }
-    
-    private func reloadData() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            self.abilityCollectionView.reloadData()
-        }
-    }
 }
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension DetailPokemonViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -172,6 +176,7 @@ extension DetailPokemonViewController: UICollectionViewDelegate, UICollectionVie
     }
 }
 
+// MARK: - ErrorStateViewDelegate
 extension DetailPokemonViewController: ErrorStateViewDelegate {
     func didTapRetryButton() {
         viewModel.viewDidLoad(pokemonName: self.pokemoneName)
